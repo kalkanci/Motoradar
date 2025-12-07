@@ -1,14 +1,15 @@
 {
-  "name": "Radar Uygulaması",
-  "short_name": "Radar",
-  "description": "Gerçek zamanlı deprem ve hava durumu radarı",
+  "name": "Motoradar HUD",
+  "short_name": "MotoHUD",
+  "description": "Motosiklet kullanıcıları için hız, hava durumu ve yol durumu HUD",
   "lang": "tr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "fullscreen"],
   "orientation": "portrait",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#0b1223",
+  "theme_color": "#00d1ff",
   "icons": [
     {
       "src": "/icons/icon-192.png",

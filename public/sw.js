@@ -7,6 +7,7 @@ const CACHE_NAME = 'radar-app-cache-v1';
 const URLS_TO_CACHE = [
   '/',
   '/manifest.json',
+  '/sw.js',
   '/icons/icon-192.png',
   '/icons/icon-512.png'
 ];
