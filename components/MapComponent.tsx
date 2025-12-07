@@ -47,6 +47,11 @@ export interface WeatherEvent {
   windspeed: number;
   weathercode: number;
   location: string;
+  windDirection?: number;
+  apparentTemperature?: number;
+  humidity?: number;
+  precipitation?: number;
+  cloudCover?: number;
 }
 
 export type EventType = EarthquakeEvent | WeatherEvent;
@@ -90,7 +95,7 @@ export default function MapComponent({ events, mode, onSelect }: MapComponentPro
       <MapContainer
         center={defaultCenter}
         zoom={6}
-        className="h-full w-full rounded-md"
+        className="h-full w-full rounded-3xl shadow-inner"
       >
         {/* Dark mode harita katmanı */}
         <TileLayer
@@ -119,7 +124,9 @@ export default function MapComponent({ events, mode, onSelect }: MapComponentPro
                   <div className="space-y-1 text-sm">
                     <div className="font-bold text-primary">{(ev as WeatherEvent).location}</div>
                     <div>Sıcaklık: {(ev as WeatherEvent).temperature.toFixed(1)}°C</div>
+                    <div>Hissedilen: {(ev as WeatherEvent).apparentTemperature?.toFixed(1) ?? '—'}°C</div>
                     <div>Rüzgar: {(ev as WeatherEvent).windspeed.toFixed(1)} km/s</div>
+                    <div>Yön: {(ev as WeatherEvent).windDirection?.toFixed(0) ?? '—'}°</div>
                     <div>Zaman: {(ev as WeatherEvent).time}</div>
                   </div>
                 )}
