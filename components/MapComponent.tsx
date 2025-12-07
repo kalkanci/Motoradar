@@ -2,7 +2,9 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect, useMemo } from 'react';
+codex/design-motorcycle-hud-with-glassmorphism-r4e6h9
 import L from 'leaflet';
+main
 import 'leaflet/dist/leaflet.css';
 
 const MapContainer = dynamic(
@@ -67,9 +69,16 @@ interface MapComponentProps {
  * Next.js ile birlikte static klasör içinde marker ikonlarının yolu düzeltilmezse,
  * markerler görünmez. Bu kod, varsayılan ikonların yolunu atar.
  */
+ codex/design-motorcycle-hud-with-glassmorphism-r4e6h9
+const fixLeafletIcons = (leaflet?: typeof import('leaflet')) => {
+  if (!leaflet) return;
+  delete (leaflet.Icon.Default as any).prototype._getIconUrl;
+  leaflet.Icon.Default.mergeOptions({
+
 const fixLeafletIcons = () => {
   delete (L.Icon.Default as any).prototype._getIconUrl;
   L.Icon.Default.mergeOptions({
+ main
     iconRetinaUrl: '/icons/icon-512.png',
     iconUrl: '/icons/icon-192.png',
     shadowUrl: undefined,
@@ -77,9 +86,20 @@ const fixLeafletIcons = () => {
 };
 
 export default function MapComponent({ events, mode, onSelect }: MapComponentProps) {
+codex/design-motorcycle-hud-with-glassmorphism-r4e6h9
+  const leaflet = useMemo(
+    () => (typeof window !== 'undefined' ? (require('leaflet') as typeof import('leaflet')) : undefined),
+    []
+  );
+
+  useEffect(() => {
+    fixLeafletIcons(leaflet);
+  }, [leaflet]);
+
   useEffect(() => {
     fixLeafletIcons();
   }, []);
+main
 
   // Varsayılan merkez: Türkiye (Tekirdağ yakınları)
   const defaultCenter = useMemo(() => {
