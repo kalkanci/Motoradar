@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+html,
+body {
+  height: 100%;
+  font-family: theme('fontFamily.sans');
+}
+
+body.dark {
+  @apply bg-gray-900 text-gray-100;
+}
+
+a {
+  @apply text-primary hover:underline;
+}
+
+body {
+  background: radial-gradient(circle at 10% 20%, rgba(0, 209, 255, 0.25), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(255, 78, 219, 0.2), transparent 30%),
+    radial-gradient(circle at 20% 80%, rgba(0, 149, 255, 0.18), transparent 25%),
+    linear-gradient(135deg, #0b1223, #101733, #1a1030);
+  color: #f8fafc;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/15 shadow-2xl;
+  }
+
+  .hud-grid {
+    @apply grid grid-cols-1 gap-3 sm:grid-cols-2;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease forwards;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
